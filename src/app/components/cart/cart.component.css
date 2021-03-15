@@ -1,0 +1,12 @@
+#total {
+    text-align:right;
+ }
+
+ #table {
+    border:1px solid red;
+    border-collapse:separate;
+ }
+
+ #table th, #table td {
+    border:1px solid #000;
+ }

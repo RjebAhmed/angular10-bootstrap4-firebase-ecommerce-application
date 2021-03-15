@@ -1,0 +1,25 @@
+<div class="body">
+    <!-- <div *ngFor="let c of cart">
+        <h1>{{c.name}}</h1>
+    </div> -->
+    <div class="row">
+        <div class=" dol dol-12 col-md col-lg-3" *ngFor=" let good of goods;index as i">
+            <div class="card" [class.outOfStock]="good.stock === 0" style=" width: 18rem; margin-top: 25px;">
+                <img class="card-img-top" [src]="good.photoUrl" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{good.name}}</h5>
+                    <p class="card-text">{{good.price}}DT</p>
+                    <a href="#" class="btn btn-primary" (click)="addToCart(i)" *ngIf="add !==i">add to cart</a>
+                    <div *ngIf="add ===i">
+                        <input type="number" min="0" class="form-control" placeholder="Amount " #amount>
+                        <button class="btn btn-primary" (click)="buy(amount.value)">Buy</button>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

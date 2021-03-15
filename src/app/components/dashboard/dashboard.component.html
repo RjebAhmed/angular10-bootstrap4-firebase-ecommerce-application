@@ -1,0 +1,59 @@
+<div>
+    <h2 class="text-center">Add New Good</h2>
+    <form #f="ngForm" (ngSubmit)="addNewGood(f)">
+        <input type="text" class="form-control" name="name" ngModel placeholder="Name " required>
+        <input type="number" class="form-control" name="price" ngModel placeholder="Price">
+        <input type="file" name="image" ngModel required #img><br><br>
+        <input type="submit" value="Add" class="btn btn-primary" [disabled]="f.invalid">
+
+    </form>
+</div>
+<br>
+<br>
+<br>
+<br>
+<button class="btn btn-warning " (click)="me()">view orders</button>
+<div class="order" *ngFor="let order of O">
+
+    <div class="info">
+        <h3>buyer info </h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>adress</th>
+                    <th>phone number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{order[0]["name"]}}</td>
+                    <td>{{order[0]["adress"]}}</td>
+                    <td>{{order[0]["phone"]}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="cart">
+        <h3>buyer commandes</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>price</th>
+                    <th>amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let o of order[1]">
+                    <td>{{o["name"]}}</td>
+                    <td>{{o["price"]}}</td>
+                    <td>{{o["amount"]}}</td>
+
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

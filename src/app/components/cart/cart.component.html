@@ -1,0 +1,47 @@
+<table class="table table-bordered" *ngIf="cart.length!=0">
+    <thead>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Amount</td>
+        <td>Total</td>
+        <td>Options</td>
+    </thead>
+    <tbody>
+        <tr *ngFor="let good of cart; index as i">
+            <td>{{good.name}}</td>
+            <td>{{good.price}}Dt</td>
+            <td>
+                <input type="number" min="0" placeholder="Amount" [(ngModel)]="good.amount">
+            </td>
+            <td>
+                {{good.price * good.amount}} DT
+            </td>
+            <td>
+                <button class="btn btn-primary" (click)="save(i)">Save</button>
+                <button class="btn btn-danger" (click)="delete(i)">Delete</button>
+
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr class="thead-light">
+            <th id="total" colspan="3">Total :</th>
+            <td>{{totale}}</td>
+        </tr>
+        <button *ngIf="!order" class="btn btn-danger center" (click)=orderNow()>Order Now</button>
+    </tfoot>
+</table>
+<form *ngIf="order" #f=ngForm (ngSubmit)="confirm(f)">
+    <input type="text" name="name" class="form-control" placeholder="Name" ngModel>
+
+    <input type="text" name="Adress" class="form-control" placeholder="Adress" ngModel>
+
+    <input type="text" name="phone" class="form-control" placeholder="Phone number" ngModel>
+
+
+
+    <button class="btn btn-primary">Confirm</button>
+
+</form>
+<div *ngIf="cart.length===0" class="alert alert-warning" role="alert">
+    the cart is empty.. please add some items </div>
